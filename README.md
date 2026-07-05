@@ -1,4 +1,8 @@
-# Navkit
+<p align="center">
+  <img src="src/icon.svg" alt="Navkit icon" width="120" height="120">
+</p>
+
+<h1 align="center">Navkit for Craft CMS</h1>
 
 A full-featured navigation and menu builder for Craft CMS 5 — multi-site, structured, translation-ready, with live-resolving links, per-menu custom fields, a cached front-end renderer, and GraphQL support.
 
@@ -9,14 +13,23 @@ A full-featured navigation and menu builder for Craft CMS 5 — multi-site, stru
 
 ## Installation
 
-From your project root:
+You can install Navkit via the plugin store, or through Composer.
 
-```bash
-composer require jainilnagar/craft-navkit
-php craft plugin/install navkit
-```
+### Composer
 
-Then open **Navkit** in the control panel to create your first menu.
+You can also add the package to your project using Composer and the command line.
+
+1. Open your terminal and go to your Craft project:
+
+        cd /path/to/project
+
+2. Then tell Composer to require the plugin, and Craft to install it:
+
+        composer require jainilnagar/navkit && php craft plugin/install navkit
+
+### Craft Plugin Store
+
+To install Navkit, navigate to the Plugin Store section of your Craft control panel, search for Navkit.
 
 ## Concepts
 
