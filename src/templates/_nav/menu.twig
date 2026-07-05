@@ -1,0 +1,6 @@
+{% set navClass = options.navClass ?? null %}
+<nav class="navkit{{ navClass ? ' ' ~ navClass }}"{% if menu.name %} aria-label="{{ menu.name }}"{% endif %}>
+    {% include 'navkit/_nav/nodes.twig' with {
+        items: nodes, depth: 1, options: options, activeIds: activeIds, trailIds: trailIds,
+    } only %}
+</nav>

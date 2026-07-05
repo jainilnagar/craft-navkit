@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <linearGradient bx:pinned="true" id="color-0">
+      <stop style="stop-color: #000428;" offset="0"/>
+      <stop style="stop-color: #004e92;" offset="1"/>
+    </linearGradient>
+    <linearGradient id="color-0-1" href="#color-0" gradientUnits="userSpaceOnUse" x1="144.666" y1="0.341" x2="144.666" y2="70.566" gradientTransform="matrix(0.909696, 0, 0, 0.909696, -99.59995, -0.252892)"/>
+    <bx:export>
+      <bx:file format="svg" href="#object-0"/>
+      <bx:file format="svg" href="#object-1" path="Untitled 2.svg"/>
+      <bx:file format="svg" href="#object-2" path="Untitled 3.svg"/>
+      <bx:file format="svg" href="#object-3" path="Untitled 4.svg"/>
+      <bx:file format="svg" href="#object-4" path="Untitled 5.svg"/>
+      <bx:file format="svg" href="#object-5" path="Untitled 6.svg"/>
+      <bx:file format="svg" href="#object-6" path="Untitled 7.svg"/>
+      <bx:file format="svg" href="#object-7" path="Untitled 8.svg"/>
+      <bx:file format="svg" path="Untitled 9.svg"/>
+    </bx:export>
+  </defs>
+  <path d="M 58.27 21.119 C 59.904 12.025 51.96 4.094 42.87 5.746 C 37.6 -1.837 26.39 -1.837 21.12 5.746 C 12.04 4.117 4.115 12.039 5.74 21.119 C -1.835 26.388 -1.835 37.6 5.74 42.869 C 4.095 51.962 12.04 59.899 21.13 58.257 C 26.4 65.837 37.61 65.837 42.88 58.257 C 51.97 59.888 59.896 51.955 58.257 42.869 C 65.836 37.6 65.836 26.388 58.257 21.119 L 58.27 21.119 Z" style="stroke-width: 1; fill: url(#color-0-1);" id="object-0"/>
+  <g style="transform-origin: 26.526px 27.144px;" transform="matrix(1.750576, 0, 0, 1.750576, 6.605067, 5.704377)">
+    <g transform="matrix(0.939574, 0, 0, 0.939574, -0.814863, -0.789834)" style="">
+      <line x1="17.726" y1="21.708" x2="39.365" y2="21.708" style="stroke-width: 1.6;" stroke="#ffffff" id="object-1"/>
+      <line x1="17.726" y1="21.708" x2="17.726" y2="37.937" style="stroke-width: 1.6;" stroke="#ffffff" id="object-2"/>
+      <line x1="17.726" y1="29.822" x2="29.898" y2="29.822" style="stroke-width: 1.6;" stroke="#ffffff" id="object-3"/>
+      <line x1="17.726" y1="37.937" x2="25.84" y2="37.937" style="stroke-width: 1.6;" stroke="#ffffff" id="object-4"/>
+      <circle cx="29.898" cy="29.822" r="2.164" fill="#ffffff" stroke="none" style="stroke-width: 1;" id="object-5"/>
+      <circle cx="25.84" cy="37.937" r="2.164" fill="#ffffff" stroke="none" style="stroke-width: 1;" id="object-6"/>
+      <circle cx="39.365" cy="21.708" r="2.164" fill="#ffffff" stroke="none" style="stroke-width: 1;" id="object-7"/>
+    </g>
+  </g>
+</svg>

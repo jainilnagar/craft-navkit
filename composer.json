@@ -1,0 +1,62 @@
+{
+    "name": "jainilnagar/navkit",
+    "description": "A full-featured navigation and menu builder for Craft CMS — multi-site, structured, translation-ready.",
+    "version": "1.0.0",
+    "type": "craft-plugin",
+    "license": "mit",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "navigation",
+        "menu",
+        "menus"
+    ],
+    "support": {
+        "email": "hello@jainilnagar.com",
+        "issues": "https://github.com/jainilnagar/craft-navkit/issues",
+        "source": "https://github.com/jainilnagar/craft-navkit",
+        "docs": "https://github.com/jainilnagar/craft-navkit/blob/main/README.md"
+    },
+    "require": {
+        "php": ">=8.2",
+        "craftcms/cms": "^5.0.0"
+    },
+    "require-dev": {
+        "craftcms/ecs": "dev-main",
+        "craftcms/phpstan": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "jainilnagar\\navkit\\": "src/"
+        }
+    },
+    "extra": {
+        "handle": "navkit",
+        "name": "Navkit",
+        "developer": "Jainil Nagar",
+        "developerUrl": "https://jainilnagar.com",
+        "documentationUrl": "https://github.com/jainilnagar/craft-navkit/blob/main/README.md",
+        "class": "jainilnagar\\navkit\\Navkit"
+    },
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "craftcms/plugin-installer": true
+        },
+        "sort-packages": true,
+        "platform": {
+            "php": "8.2"
+        }
+    },
+    "scripts": {
+        "check-cs": "ecs check --ansi",
+        "fix-cs": "ecs check --fix --ansi",
+        "phpstan": "phpstan analyse -c phpstan.neon --memory-limit=1G",
+        "analyse": [
+            "@check-cs",
+            "@phpstan"
+        ]
+    }
+}

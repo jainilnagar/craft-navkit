@@ -1,0 +1,41 @@
+{% set maxDepth = options.maxDepth ?? null %}
+{% set optClass = options.class ?? null %}
+{% set listClass = depth == 1
+    ? ('navkit-nav' ~ (optClass ? ' ' ~ optClass))
+    : 'navkit-subnav navkit-subnav--level' ~ depth %}
+
+<ul class="{{ listClass }}"{% if depth == 1 %} role="menubar"{% else %} role="menu"{% endif %}>
+    {% for item in items %}
+        {% set isActive = item.id in activeIds %}
+        {% set inTrail = item.id in trailIds %}
+        {% set hasChildren = item.children is not empty and (maxDepth is null or depth < maxDepth) %}
+        {% set itemClasses = [
+            'navkit-item',
+            hasChildren ? 'navkit-item--has-children',
+            isActive ? 'is-active',
+            inTrail and not isActive ? 'is-active-trail',
+        ]|filter(v => v)|join(' ') %}
+        <li class="{{ itemClasses }}" role="none">
+            {% if item.url %}
+                <a href="{{ item.url }}"
+                   role="menuitem"
+                        {%- if item.classes %} class="{{ item.classes }}"{% endif %}
+                        {%- if item.newWindow %} target="_blank" rel="{{ ('noopener ' ~ (item.rel ?? ''))|trim }}"
+                        {%- elseif item.rel %} rel="{{ item.rel }}"{% endif %}
+                        {%- if isActive %} aria-current="page"{% endif %}>{{ item.title }}</a>
+            {% else %}
+                <span class="{{ ('navkit-label ' ~ (item.classes ?? ''))|trim }}">{{ item.title }}</span>
+            {% endif %}
+
+            {% if hasChildren %}
+                {% include 'navkit/_nav/nodes.twig' with {
+                    items: item.children,
+                    depth: depth + 1,
+                    options: options,
+                    activeIds: activeIds,
+                    trailIds: trailIds,
+                } only %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

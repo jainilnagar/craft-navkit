@@ -1,0 +1,26 @@
+{% extends '_layouts/elementindex.twig' %}
+{% requirePermission 'navkit:manageNodes' %}
+
+{% set elementType = 'jainilnagar\\navkit\\elements\\Node' %}
+
+{% set crumbs = [
+    { label: 'Navkit'|t('navkit'), url: url('navkit/menus') },
+    { label: 'Menus'|t('navkit'), url: url('navkit/menus') },
+] %}
+{% set title = 'Nodes'|t('navkit') %}
+
+{% block actionButton %}
+    <div class="btngroup">
+        <a class="btn" href="{{ url('navkit/menus') }}">{{ 'Manage menus'|t('navkit') }}</a>
+    </div>
+    <div class="btngroup submit">
+        {% set menus = craft.navkit.menus() %}
+        {% set firstMenu = menus|first %}
+        <a class="btn submit add icon" href="{{ actionUrl('navkit/nodes/create', {
+            elementType: elementType,
+            menuId: firstMenu.id
+        }) }}">
+            {{ 'New node'|t('navkit') }}
+        </a>
+    </div>
+{% endblock %}

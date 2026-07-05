@@ -1,0 +1,64 @@
+# CRAFT ENVIRONMENT
+.env
+.env.*
+!.env.example
+
+# COMPOSER
+/vendor
+/composer.lock
+
+# BUILD FILES
+/bower_components/*
+/node_modules/*
+/build/*
+/npm-debug.log
+/yarn-debug.log
+/yarn-error.log
+/pnpm-debug.log
+/dist/
+/release/
+/releases/
+*.zip
+*.tar
+*.tar.gz
+
+# LOGS
+*.log
+
+# PHPStan / ECS / PHPUnit / coverage
+/.phpstan.cache/
+.phpstan.result-cache
+/.phpunit.cache/
+/coverage/
+/.phpunit.result.cache
+/.ecs-cache
+/.ecs.cache
+
+# MISC FILES
+.cache
+.DS_Store
+.idea
+.project
+.settings
+.map
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.esproj
+*.sublime-workspace
+*.sublime-project
+*.tmproj
+*.tmproject
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+internal
+
+# TEMPORARY FILES
+*.tmp
+*.temp
+*.swp
+*.swo
+*~

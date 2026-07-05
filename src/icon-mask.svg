@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="11 76 444 360" fill="none" stroke="currentColor" style="enable-background:new 11 76 444 360;">
+  <g transform="matrix(26.366638, 0, 0, 26.366638, -72.492973, -60.39967)">
+    <!-- Top Horizontal Bar -->
+    <path d="M 4 5.2 L 20 5.2 L 20 6.8 L 4 6.8 Z" fill="currentColor" stroke="none" />
+
+    <!-- Left Vertical Bar -->
+    <path d="M 3.2 6 L 4.8 6 L 4.8 18 L 3.2 18 Z" fill="currentColor" stroke="none" />
+
+    <!-- Middle Horizontal Bar -->
+    <path d="M 4 11.2 L 13 11.2 L 13 12.8 L 4 12.8 Z" fill="currentColor" stroke="none" />
+
+    <!-- Bottom Horizontal Bar -->
+    <path d="M 4 17.2 L 10 17.2 L 10 18.8 L 4 18.8 Z" fill="currentColor" stroke="none" />
+
+    <!-- Vector Circles -->
+    <circle cx="13" cy="12" r="1.6" fill="currentColor" stroke="none"/>
+    <circle cx="10" cy="18" r="1.6" fill="currentColor" stroke="none"/>
+    <circle cx="20" cy="6" r="1.6" fill="currentColor" stroke="none"/>
+  </g>
+</svg>

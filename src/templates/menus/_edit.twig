@@ -1,0 +1,97 @@
+{% extends '_layouts/cp' %}
+{% requirePermission 'navkit:manageMenus' %}
+
+{% import '_includes/forms.twig' as forms %}
+
+{% set selectedSubnavItem = 'menus' %}
+{% set crumbs = [
+    { label: 'Navkit'|t('navkit'), url: url('navkit') },
+    { label: 'Menus'|t('navkit'), url: url('navkit/menus') },
+] %}
+
+{% set fullPageForm = true %}
+{% set saveShortcut = true %}
+
+{% block content %}
+    <input type="hidden" name="action" value="navkit/menus/save">
+    {{ redirectInput('navkit/menus') }}
+    {% if menu.id %}<input type="hidden" name="menuId" value="{{ menu.id }}">{% endif %}
+
+    {{ forms.textField({
+        first: true,
+        label: 'Name'|t('navkit'),
+        instructions: 'What this menu will be called in the control panel.'|t('navkit'),
+        id: 'name',
+        name: 'name',
+        value: menu.name,
+        errors: menu.getErrors('name'),
+        autofocus: true,
+        required: true,
+    }) }}
+
+    {{ forms.textField({
+        label: 'Handle'|t('navkit'),
+        instructions: 'How you’ll refer to this menu in your templates.'|t('navkit'),
+        id: 'handle',
+        name: 'handle',
+        class: 'code',
+        autocorrect: false,
+        autocapitalize: false,
+        value: menu.handle,
+        errors: menu.getErrors('handle'),
+        required: true,
+    }) }}
+
+    {{ forms.textField({
+        label: 'Max levels'|t('navkit'),
+        instructions: 'The maximum number of nesting levels this menu can have. Leave blank for no limit.'|t('navkit'),
+        id: 'maxLevels',
+        name: 'maxLevels',
+        size: 5,
+        value: menu.maxLevels,
+        errors: menu.getErrors('maxLevels'),
+    }) }}
+
+    <hr>
+
+    {% set siteRows = [] %}
+    {% set siteCols = {
+        site: { type: 'heading', heading: 'Site'|t('navkit') },
+        enabled: { type: 'checkbox', heading: 'Enabled'|t('navkit') },
+    } %}
+    {% if allSites|length > 1 %}
+        <h2>{{ 'Site Settings'|t('navkit') }}</h2>
+        {% for site in allSites %}
+            {{ forms.checkboxField({
+                label: site.name,
+                name: 'sites[]',
+                value: site.uid,
+                checked: menu.siteSettings[site.uid] is defined or (not menu.id),
+            }) }}
+        {% endfor %}
+
+        {{ forms.selectField({
+            label: 'Propagation Method'|t('navkit'),
+            instructions: 'Which sites should nodes in this menu be saved to?'|t('navkit'),
+            id: 'propagationMethod',
+            name: 'propagationMethod',
+            value: menu.propagationMethod.value,
+            options: propagationMethodOptions,
+        }) }}
+    {% else %}
+        <input type="hidden" name="sites[]" value="{{ allSites|first.uid }}">
+        <input type="hidden" name="propagationMethod" value="{{ menu.propagationMethod.value }}">
+    {% endif %}
+
+    <hr>
+    <h2>{{ 'Node Fields'|t('navkit') }}</h2>
+    {{ forms.fieldLayoutDesignerField({
+        fieldLayout: menu.getFieldLayout(),
+    }) }}
+{% endblock %}
+
+{% if not menu.handle %}
+    {% js %}
+        new Craft.HandleGenerator('#name', '#handle');
+    {% endjs %}
+{% endif %}

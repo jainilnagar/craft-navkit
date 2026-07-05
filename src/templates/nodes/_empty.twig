@@ -1,0 +1,15 @@
+{% extends '_layouts/cp' %}
+{% requirePermission 'navkit:manageNodes' %}
+
+{% set title = 'Menus'|t('navkit') %}
+{% set crumbs = [
+    { label: 'Navkit'|t('navkit'), url: url('navkit') },
+] %}
+
+{% block content %}
+    <div class="zilch">
+        <p>{{ 'You haven’t created any menus yet.'|t('navkit') }}</p>
+        <p>{{ 'A menu is the container your navigation nodes live in.'|t('navkit') }}</p>
+        <p><a href="{{ url('navkit/menus/new') }}" class="btn submit add icon">{{ 'Create a menu'|t('navkit') }}</a></p>
+    </div>
+{% endblock %}

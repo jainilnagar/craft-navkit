@@ -1,0 +1,63 @@
+{% extends '_layouts/cp' %}
+{% requirePermission 'navkit:manageMenus' %}
+
+{% set title = 'Menus'|t('navkit') %}
+{% set selectedSubnavItem = 'menus' %}
+{% set crumbs = [
+    { label: 'Navkit'|t('navkit'), url: url('navkit') },
+] %}
+
+{% block actionButton %}
+    <a href="{{ url('navkit/menus/new') }}" class="btn submit add icon">{{ 'New menu'|t('navkit') }}</a>
+{% endblock %}
+
+{% block content %}
+    {% if menus|length %}
+        <table id="menus" class="data fullwidth collapsible">
+            <thead>
+                <tr>
+                    <th scope="col">{{ 'Name'|t('navkit') }}</th>
+                    <th scope="col">{{ 'Handle'|t('navkit') }}</th>
+                    <th scope="col">{{ 'Max levels'|t('navkit') }}</th>
+                    <th scope="col">{{ 'Nodes'|t('navkit') }}</th>
+                    <td class="thin"></td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for menu in menus %}
+                    <tr data-id="{{ menu.id }}" data-name="{{ menu.name }}">
+                        <th scope="row" data-title="{{ 'Name'|t('navkit') }}">
+                            <a href="{{ url('navkit/menus/' ~ menu.id) }}">{{ menu.name }}</a>
+                        </th>
+                        <td data-title="{{ 'Handle'|t('navkit') }}">
+                            <craft-copy-attribute value="{{ menu.handle }}">
+                                <code>{{ menu.handle }}</code>
+                            </craft-copy-attribute>
+                        </td>
+                        <td data-title="{{ 'Max levels'|t('navkit') }}">{{ menu.maxLevels ?? 'Unlimited'|t('navkit') }}</td>
+                        <td class="thin">
+                            <a class="btn small" href="{{ url('navkit/nodes', { source: 'menu:' ~ menu.uid }) }}">
+                                {{ 'Manage nodes'|t('navkit') }}
+                            </a>
+                        </td>
+                        <td class="thin">
+                            <a class="delete icon" title="{{ 'Delete'|t('navkit') }}" role="button"></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="zilch">
+            <p>{{ 'No menus yet.'|t('navkit') }}</p>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% js %}
+    new Craft.AdminTable({
+        tableSelector: '#menus',
+        deleteAction: 'navkit/menus/delete',
+        confirmDeleteMessage: '{{ 'Are you sure you want to delete “{name}” and all of its nodes?'|t('navkit') }}',
+    });
+{% endjs %}

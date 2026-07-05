@@ -1,0 +1,17 @@
+{% import '_includes/forms.twig' as forms %}
+
+{{ forms.lightswitchField({
+    label: 'Cache rendered navigation'|t('navkit'),
+    instructions: 'Cache the output of render() and bust it automatically when nodes change.'|t('navkit'),
+    id: 'enableRenderCache',
+    name: 'enableRenderCache',
+    on: settings.enableRenderCache,
+}) }}
+
+{{ forms.textField({
+    label: 'Default menu class'|t('navkit'),
+    instructions: 'CSS class applied to the wrapping element by render() when none is passed.'|t('navkit'),
+    id: 'defaultMenuClass',
+    name: 'defaultMenuClass',
+    value: settings.defaultMenuClass,
+}) }}

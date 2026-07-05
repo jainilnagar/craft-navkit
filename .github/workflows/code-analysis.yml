@@ -1,0 +1,59 @@
+name: Code Analysis
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  code-analysis:
+    name: ${{ matrix.task.name }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        task:
+          - name: PHPStan
+            command: composer phpstan
+          - name: Coding Standards
+            command: composer check-cs
+
+    env:
+      COMPOSER_CACHE_DIR: /tmp/composer-cache
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v5
+        with:
+          path: /tmp/composer-cache
+          key: composer-${{ runner.os }}-${{ hashFiles('composer.json') }}
+          restore-keys: |
+            composer-${{ runner.os }}-
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: ctype,curl,dom,iconv,intl,json,mbstring,openssl,pcre,pdo,reflection,spl,zip
+          ini-values: memory_limit=512M
+          coverage: none
+          tools: composer:v2
+
+      - name: Validate composer.json
+        run: composer validate --strict --no-check-lock
+
+      - name: Install Composer dependencies
+        run: composer update --no-interaction --no-progress --prefer-dist
+
+      - name: Run ${{ matrix.task.name }}
+        run: ${{ matrix.task.command }}
