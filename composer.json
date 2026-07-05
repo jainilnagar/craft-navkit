@@ -1,7 +1,6 @@
 {
     "name": "jainilnagar/navkit",
     "description": "A full-featured navigation and menu builder for Craft CMS — multi-site, structured, translation-ready.",
-    "version": "1.0.0",
     "type": "craft-plugin",
     "license": "mit",
     "keywords": [
