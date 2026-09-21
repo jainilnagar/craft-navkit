@@ -10,17 +10,31 @@
 {% set title = 'Nodes'|t('navkit') %}
 
 {% block actionButton %}
+    {% set menus = craft.navkit.menus() %}
     <div class="btngroup">
         <a class="btn" href="{{ url('navkit/menus') }}">{{ 'Manage menus'|t('navkit') }}</a>
     </div>
     <div class="btngroup submit">
-        {% set menus = craft.navkit.menus() %}
-        {% set firstMenu = menus|first %}
-        <a class="btn submit add icon" href="{{ actionUrl('navkit/nodes/create', {
-            elementType: elementType,
-            menuId: firstMenu.id
-        }) }}">
+        <a id="navkit-new-node" class="btn submit add icon"
+           href="{{ actionUrl('navkit/nodes/create', { menuId: menus|first.id }) }}">
             {{ 'New node'|t('navkit') }}
         </a>
     </div>
+
+    {% js %}
+        (function() {
+        var $btn = $('#navkit-new-node');
+        if (!$btn.length) return;
+
+        $btn.on('click', function(e) {
+        var $sel = $('.sidebar nav a.sel[data-menu-id]').first();
+        var menuId = $sel.length ? $sel.data('menuId') : null;
+        if (menuId) {
+        e.preventDefault();
+        window.location.href = Craft.getActionUrl('navkit/nodes/create', { menuId: menuId });
+        }
+        // else: fall back to the server-rendered href (first menu)
+        });
+        })();
+    {% endjs %}
 {% endblock %}

@@ -273,7 +273,7 @@ class Node extends Element
                 'structureId' => $menu->structureId,
                 'structureEditable' => true,
                 'defaultSort' => ['structure', 'asc'],
-                'data' => ['handle' => $menu->handle],
+                'data' => ['handle' => $menu->handle, 'menu-id' => $menu->id],
             ];
         }
 

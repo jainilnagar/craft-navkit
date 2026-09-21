@@ -1,5 +1,10 @@
 # Release Notes for Navkit
 
+## 1.0.1 - 2026-09-21
+
+### Fixed
+- The "New node" button now targets the currently-selected menu source instead of always the first menu.
+
 ## 1.0.0
 
 Initial release.
